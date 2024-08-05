@@ -3,8 +3,8 @@ import pymysql
 from decimal import Decimal
 
 rds_host = "database-cafe-balu.cziym6ii4nn7.us-east-2.rds.amazonaws.com"
-rds_user = "baluroot"
-rds_password = "baluroot"
+rds_user = ""
+rds_password = ""
 rds_db = "cafe_balu"
 
 def lambda_handler(event, __):
