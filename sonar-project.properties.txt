@@ -1,0 +1,11 @@
+sonar.projectKey=AlixStart313_Cafe-Balu_sonarCloud_test
+sonar.organization=sen2b0yz
+sonar.host.url=https://sonarcloud.io
+
+# Incluir solo los archivos app.py en todas las subcarpetas de SRC
+sonar.sources=SRC
+sonar.inclusions=SRC/**/app.py
+
+sonar.projectName=Cafe-Balu-sonar-test
+sonar.projectVersion=1.0
+sonar.sourceEncoding=UTF-8
