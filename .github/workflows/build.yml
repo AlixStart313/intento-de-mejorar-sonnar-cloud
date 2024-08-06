@@ -23,15 +23,12 @@ jobs:
           
       - name: Install dependencies
         run: |
+          pip install -r SRC/requirements.txt
           pip install -r cafe-balu-back/tests/requirements.txt
 
       - name: Run tests and generate coverage report
         run: |
           pytest cafe-balu-back/tests/units --cov=SRC --cov-report=xml
-
-      - name: Run unit tests and generate coverage report
-        run: |
-          pytest --cov=SRC --cov-report=xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
