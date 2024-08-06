@@ -28,6 +28,7 @@ jobs:
       - name: Run tests and generate coverage report
         run: |
           pytest cafe-balu-back/tests/units --cov=SRC --cov-report=xml
+
       - name: Run unit tests and generate coverage report
         run: |
           pytest --cov=SRC --cov-report=xml
