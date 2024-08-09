@@ -1,0 +1,33 @@
+name: Test with Sonar
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12
+
+      - name: Install dependencies
+        run: |
+          pip install -r cafe_balu_back/cancel_sales/requirements.txt
+          pip install -r cafe_balu_back/test/requirements.txt
+          
+      - name: Run tests and generate coverage
+        run: |
+          pytest $(pwd)/Servicios_Cafe_Balu/cafe_balu_back/test/unit/test_app_cancel_sales.py --cov=$(pwd)/Servicios_Cafe_Balu/cafe_balu_back/cancel_sales/app.py --cov-report=xml --cov-report=term
+          
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
